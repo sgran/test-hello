@@ -11,6 +11,8 @@ stage('QA') {
                 sh 'sleep 30'
             }, quickerTests: {
                 sh 'sleep 10'
+            }, evenquickerTests: {
+                sh 'sleep 5'
             }
         )
     }
