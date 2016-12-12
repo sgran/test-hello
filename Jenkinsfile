@@ -1,7 +1,17 @@
 stage('Dev') {
     node {
-        git url: 'https://github.com/sgran/test-hello.git'
         echo 'hello from Pipeline'
         sh 'ls -al'
+    }
+}
+stage('QA') {
+    node {
+        parallel(
+            longerTests: {
+                sh 'sleep 30'
+            }, quickerTests: {
+                sh 'sleep 10'
+            }
+        )
     }
 }
