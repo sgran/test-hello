@@ -1,5 +1,5 @@
 stage('Dev') {
-    node {
+    node('mesos') {
         echo 'hello from Pipeline'
         sh 'ls -al'
         sh 'hostname -f'
