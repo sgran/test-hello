@@ -2,6 +2,8 @@ stage('Dev') {
     node {
         echo 'hello from Pipeline'
         sh 'ls -al'
+        sh 'hostname -f'
+        sh 'pwd'
     }
 }
 stage('QA') {
