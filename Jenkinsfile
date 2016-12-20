@@ -4,6 +4,7 @@ stage('Dev') {
         sh 'ls -al'
         sh 'hostname -f'
         sh 'pwd'
+        sh 'false'
     }
 }
 stage('QA') {
