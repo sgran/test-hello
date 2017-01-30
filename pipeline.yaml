@@ -1,0 +1,45 @@
+pipelines:
+  testMe: # definition of mypipe1 pipeline
+    group: basic # note that the group name can contain only of alphanumeric & underscore characters
+    label_template: "${mygit[:8]}"
+    locking: on
+    materials:
+      mygit: # this is the name of material, the name can contain only of alphanumeric & underscore characters
+        # keyword git says about type of material and url at once
+        git: https://github.com/sgran/test-hello
+        branch: master
+    stages: # list of stages in order
+      - build: # name of stage
+          clean_workspace: true
+          jobs:
+            firstJob: # name of the job
+              tasks: # ordered list of tasks to execute in job csharp
+               - exec: # indicates type of task
+                   command: ls
+                   arguments:
+                    - "/"
+            secondJob:
+              tasks:
+               - exec: # indicates type of task
+                   command: ls
+                   arguments:
+                    - "/var"
+  testThat: # definition of mypipe1 pipeline
+    group: basic # note that the group name can contain only of alphanumeric & underscore characters
+    label_template: "${myupstream}"
+    locking: on
+    materials:
+      myupstream: # this is the name of material, the name can contain only of alphanumeric & underscore characters
+        # keyword git says about type of material and url at once
+        pipeline: testMe
+        stage: build
+    stages: # list of stages in order
+      - build: # name of stage
+          clean_workspace: true
+          jobs:
+            firstJob: # name of the job
+              tasks: # ordered list of tasks to execute in job csharp
+               - exec: # indicates type of task
+                   command: echo
+                   arguments:
+                    - "oh wowsers"
