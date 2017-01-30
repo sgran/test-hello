@@ -13,14 +13,14 @@ pipelines:
           clean_workspace: true
           jobs:
             firstJob:
-              elasticProfileId: tests
+              elastic_profile_id: tests
               tasks: # ordered list of tasks to execute in job csharp
                - exec: # indicates type of task
                    command: ls
                    arguments:
                     - "/"
             secondJob:
-              elasticProfileId: tests
+              elastic_profile_id: tests
               tasks:
                - exec: # indicates type of task
                    command: ls
@@ -40,7 +40,7 @@ pipelines:
           clean_workspace: true
           jobs:
             firstJob: # name of the job
-              elasticProfileId: tests
+              elastic_profile_id: tests
               tasks: # ordered list of tasks to execute in job csharp
                - exec: # indicates type of task
                    command: echo
