@@ -9,6 +9,17 @@ pipelines:
         git: https://github.com/sgran/test-hello
         branch: master
     stages: # list of stages in order
+    
+      - pre: # name of stage
+          clean_workspace: true
+          jobs:
+            firstJob:
+              elastic_profile_id: tests
+              tasks: # ordered list of tasks to execute in job csharp
+               - exec: # indicates type of task
+                   command: echo
+                   arguments:
+                    - "hey ho let's go"
       - build: # name of stage
           clean_workspace: true
           jobs:
